@@ -28,35 +28,44 @@ with open(f'logs/hnswlib_recall_release.csv', 'r') as file:
 # 转换为DataFrame
 df = pd.DataFrame(data, columns=['dataset', 'ef', 'tri_ef', 'qps', 'min_time', 'recall'])
 
-# 只保留recall > 0.9的数据
-df = df[df['recall'] > 0.8]
-
-# 提取trief=0的数据
-def extract_trief_0_data(dataset_name, num_query):
-    dataset = df[df['dataset'] == dataset_name]
-    trief_0 = dataset[dataset['tri_ef'] == 0].copy()
-    trief_0['qps'] = trief_0['qps'] * num_query
-    return trief_0
-
-# 提取trief!=0的数据并适当调整
-def calculate_trief_non_0_data(dataset_name, num_query):
-    dataset = df[df['dataset'] == dataset_name]
-    trief_non_0 = dataset[dataset['tri_ef'] != 0].copy()
-    trief_non_0['qps'] = trief_non_0['qps'] * num_query
-    return trief_non_0.groupby('ef').apply(lambda x: x.nlargest(1, 'qps')).reset_index(drop=True)
-
 datasets = ["msong", "sift1m", "nuswide", "fasion_mnist_784", "glove25"] # , "HandOutlines", "StarLightCurves"
-query_num = {
+query_nums = {
     "msong": 1000,
     "sift1m": 10000,
     "nuswide": 200,
     "fasion_mnist_784": 10000,
     "glove25": 10000
 }
+recall_ranges = {
+    "msong": (0.9, 1),
+    "sift1m": (0.7, 1),
+    "nuswide": (0, 1),
+    "fasion_mnist_784": (0.8, 1),
+    "glove25": (0.7, 1)
+}
+
+# 提取trief=0的数据
+def extract_trief_0_data(dataset_name):
+    num_query = query_nums[dataset_name]
+    dataset = df[df['dataset'] == dataset_name]
+    dataset = dataset[(dataset['recall'] >= recall_ranges[dataset_name][0]) & (dataset['recall'] <= recall_ranges[dataset_name][1])]
+    trief_0 = dataset[dataset['tri_ef'] == 0].copy()
+    trief_0['qps'] = trief_0['qps'] * num_query
+    return trief_0
+
+# 提取trief!=0的数据并适当调整
+def calculate_trief_non_0_data(dataset_name):
+    num_query = query_nums[dataset_name]
+    dataset = df[df['dataset'] == dataset_name]
+    dataset = dataset[(dataset['recall'] >= recall_ranges[dataset_name][0]) & (dataset['recall'] <= recall_ranges[dataset_name][1])]
+    trief_non_0 = dataset[dataset['tri_ef'] != 0].copy()
+    trief_non_0['qps'] = trief_non_0['qps'] * num_query
+    return trief_non_0.groupby('ef').apply(lambda x: x.nlargest(1, 'qps')).reset_index(drop=True)
+
 
 data = {
     name_map(dataset): (
-        extract_trief_0_data(dataset, query_num[dataset]), calculate_trief_non_0_data(dataset, query_num[dataset])
+        extract_trief_0_data(dataset), calculate_trief_non_0_data(dataset)
     ) for dataset in datasets
 }
 
