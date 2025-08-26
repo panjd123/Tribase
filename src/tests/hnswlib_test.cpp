@@ -101,9 +101,9 @@ int main(int argc, char* argv[]) {
     for (size_t ef = std::max((size_t)30, k); ef < 100; ef += 10) {
         efs.push_back(ef);
     }
-    // for (size_t ef = std::max((size_t)100, k); ef < 1000; ef += 100) {
-    //     efs.push_back(ef);
-    // }
+    for (size_t ef = std::max((size_t)100, k); ef < 1000; ef += 100) {
+        efs.push_back(ef);
+    }
     std::cout << "Testing..." << std::endl;
     bool stop_flag = false;
     for (size_t ef : efs) {
