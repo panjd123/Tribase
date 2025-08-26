@@ -12,8 +12,6 @@ We have prepared some tiny datasets for testing in benchmarks folder. You can do
 - msong: [GoogleDrive](https://drive.google.com/file/d/1g3lKhrjIqYMKjahJdf9LH5HuuSuhP3so/view?usp=drive_link)
 - sift1m: [GoogleDrive](https://drive.google.com/file/d/1BcTuT4su77_Ue6Wi8EU340HSYoJeHwnD/view?usp=drive_link)
 
-If you build from docker, it will automatically download nuswide dataset from the link above.
-
 ### Dataset Format
 
 You can prepare your own dataset in the following format, place it in the benchmarks folder.

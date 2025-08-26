@@ -29,7 +29,7 @@ with open(f'logs/hnswlib_recall_release.csv', 'r') as file:
 df = pd.DataFrame(data, columns=['dataset', 'ef', 'tri_ef', 'qps', 'min_time', 'recall'])
 
 # 只保留recall > 0.9的数据
-df = df[df['recall'] > 0.9]
+df = df[df['recall'] > 0.8]
 
 # 提取trief=0的数据
 def extract_trief_0_data(dataset_name, num_query):
@@ -53,7 +53,6 @@ query_num = {
     "fasion_mnist_784": 10000,
     "glove25": 10000
 }
-
 
 data = {
     name_map(dataset): (
