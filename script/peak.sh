@@ -6,7 +6,7 @@ script="./release/bin/query"
 # 对 1 到 22 之间的数字进行循环
 for i in {1..22}; do
     # 构建文件名
-    output_file="/home/xuqian/ICDE2025/TSQP/data/duck_mem/duck_${i}_mem.txt"
+    output_file="logs/${i}_mem.txt"
 
     # 启动查询脚本并传递参数
     taskset -c 0 python3 $script --query TEST_$(printf "%02d" $i) &
