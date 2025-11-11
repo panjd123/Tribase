@@ -183,6 +183,12 @@ Optional arguments:
   --early_stop        early stop
 ```
 
+## Reproduce
+
+If you wish to fully reproduce our experiments, we highly recommend referring to the [`REPRODUCE.md`](REPRODUCE.md) document, which executes the experiments in a carefully orchestrated order to minimize execution time, and ensures that only the experiments mentioned in the paper are run.
+
+If you need to understand the workflow of our experiments and how a dataset is tested, you can refer to [`figures/run_nuswide.sh`](figures/run_nuswide.sh), which shows you the entire workflow, and you can make any modifications based on it.
+
 ## Usage in Your Own Project
 
 You can use the Tribase index in your own project by including the `src/tribase.h` header file and linking the `tribase` library. The following is a tiny example of how to use the Tribase index in your project.
