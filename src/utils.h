@@ -1,6 +1,6 @@
 #pragma once
 
-#include <mkl.h>
+// #include <mkl.h>
 // #include <mkl_cblas.h>
 #include <immintrin.h>  // 包含AVX2和其他SIMD指令集的头文件
 #include <algorithm>    // 包含std::fill_n

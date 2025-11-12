@@ -4,12 +4,6 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 SHELL ["/bin/bash", "-c"]
 
-RUN cp /etc/apt/sources.list /etc/apt/sources.list.bak && \
-    echo "deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble main restricted universe multiverse" > /etc/apt/sources.list && \
-    echo "deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-updates main restricted universe multiverse" >> /etc/apt/sources.list && \
-    echo "deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-backports main restricted universe multiverse" >> /etc/apt/sources.list && \
-    echo "deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu/ noble-security main restricted universe multiverse" >> /etc/apt/sources.list
-
 RUN apt update && \
     apt install -y \
     build-essential \
@@ -23,7 +17,11 @@ RUN apt update && \
     python3 \
     python3-pip \
     python3-venv \
-    swig
+    swig \
+    ttf-mscorefonts-installer \
+    gdb \
+    passwd \
+    zip
 
 # install gtest
 RUN mkdir -p /tmp && \
@@ -34,12 +32,6 @@ RUN mkdir -p /tmp && \
     cmake --build release -j && \
     cmake --install release && \
     rm -rf /tmp/googletest
-
-# install intel MKL
-RUN wget -O- https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB | gpg --dearmor | tee /usr/share/keyrings/oneapi-archive-keyring.gpg > /dev/null && \
-    echo "deb [signed-by=/usr/share/keyrings/oneapi-archive-keyring.gpg] https://apt.repos.intel.com/oneapi all main" | tee /etc/apt/sources.list.d/oneAPI.list && \
-    apt update && \
-    apt install -y intel-oneapi-mkl=2024.2.0-663 intel-oneapi-mkl-devel=2024.2.0-663
 
 # install eigen
 RUN cd /tmp && \
@@ -53,8 +45,6 @@ RUN cd /tmp && \
     rm -rf /tmp/eigen-3.4.0
 
 WORKDIR /opt
-
-RUN apt install -y ttf-mscorefonts-installer gdb passwd zip
 
 # setup python3 environment
 RUN python3 -m venv /opt/venv && \

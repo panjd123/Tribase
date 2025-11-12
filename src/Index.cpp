@@ -326,12 +326,15 @@ void Index::add(size_t n, const float* codes) {
             if (verbose) {
                 if (logwatch.elapsedSeconds() > log_interval || total_processd == nlist) {
                     logwatch.reset();
-                    std::cout << std::format("build: {:.2f}%", 100.0 * total_processd / nlist) << std::endl;
                     double total_elapsed = train_elapsed + add_elapsed + search_elapsed;
+                    double progress = static_cast<double>(total_processed) / nlist;
+                    double remaining_est = total_elapsed / progress - total_elapsed;
+                    std::cout << std::format("build: {:.2f}%    Elapsed: {:.2f}s    Estimated remaining: {:.2f}s\n",
+                            100.0 * progress, total_elapsed, remaining_est);
                     double train_percent = 100.0 * train_elapsed / total_elapsed;
                     double add_percent = 100.0 * add_elapsed / total_elapsed;
                     double search_percent = 100.0 * search_elapsed / total_elapsed;
-                    std::cout << std::format("train: {:.2f}%    add: {:.2f}%    search: {:.2f}%    total: {:.2f}\n", train_percent, add_percent, search_percent, total_elapsed);
+                    std::cout << std::format("build-time-split: train: {:.2f}%    add: {:.2f}%    search: {:.2f}%    total: {:.2f}\n", train_percent, add_percent, search_percent, total_elapsed);
                     float sub_recall_ip = total_sub_count_ip ? 100.0 * total_sub_recall_ip / total_sub_count_ip : 0;
                     float sub_recall_l2 = total_sub_count_l2 ? 100.0 * total_sub_recall_l2 / total_sub_count_l2 : 0;
                     float sub_recall_ip_5 = total_sub_count_ip_5 ? 100.0 * total_sub_recall_ip_5 / total_sub_count_ip_5 : 0;
