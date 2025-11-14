@@ -37,7 +37,7 @@ query_smooth = a * build_smooth**2 + b * build_smooth + c
 # 创建图形
 plt.figure(figsize=(7, 4.5))
 plt.plot(build_smooth, query_smooth, marker='o', linestyle='-', color='blue', markersize=8)
-# plt.plot(build_speedup, query_speedup, marker='o', linestyle='-.', color='red', markersize=8)
+plt.plot(build_speedup, query_speedup, marker='o', linestyle='-.', color='red', markersize=8)
 
 # 设置图形的标题和坐标轴标签
 plt.title('Query Speed vs Build Speedup', fontsize=24, fontweight='normal', color='black')

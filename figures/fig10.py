@@ -41,7 +41,6 @@ mpl.rcParams["pdf.fonttype"] = 42  # 设置为Type 1字体
 mpl.rcParams["ps.fonttype"] = 42  # 设置为Type 1字体
 
 try:
-    plt.rcParams["font.family"] = "Arial"
     plt.rcParams["font.size"] = 17  # 您可以根据需要调整这个值
 except Exception:
     plt.rcParams["font.family"] = "Times New Roman"

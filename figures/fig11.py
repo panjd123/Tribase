@@ -44,7 +44,6 @@ mpl.rcParams["ps.fonttype"] = 42  # 设置为Type 1字体
 
 # 设置字体和大小
 plt.rcParams["font.size"] = 10
-plt.rcParams["font.family"] = "Arial"
 
 # 创建图形和子图
 fig, axs = plt.subplots(1, 5, figsize=(20, 3.7))  # 创建5个子图
