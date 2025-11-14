@@ -105,6 +105,6 @@ plt.tight_layout()
 plt.subplots_adjust(top=0.75, left=0.04)
 
 plt.savefig("figures/fig11.png", dpi=300)
-# plt.savefig('purning_nprobe.pdf', dpi=300, bbox_inches='tight', format='pdf')
+plt.savefig("figures/fig11.pdf", dpi=300, bbox_inches="tight", format="pdf")
 
 # plt.show()

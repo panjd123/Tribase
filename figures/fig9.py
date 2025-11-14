@@ -99,3 +99,4 @@ plt.figlegend(['trief=0', 'trief!=0, max qps'], loc='upper center', bbox_to_anch
 
 plt.tight_layout(rect=[0, 0, 1, 0.95])  # 调整布局以适应图例
 plt.savefig('figures/fig9.png', bbox_inches='tight')
+plt.savefig('figures/fig9.pdf', dpi=300, bbox_inches='tight', format='pdf')

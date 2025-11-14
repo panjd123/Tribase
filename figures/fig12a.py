@@ -101,3 +101,4 @@ plt.subplots_adjust(bottom=0.15, left=0.2)  # 这里的0.2可以根据需要调�
 plt.tight_layout()
 # 显示图形
 plt.savefig("figures/fig12a.png", dpi=300)
+plt.savefig("figures/fig12a.pdf", dpi=300, bbox_inches="tight", format="pdf")

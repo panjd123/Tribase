@@ -81,5 +81,6 @@ plt.tight_layout()
 plt.subplots_adjust(top=0.75) 
 # 显示图形
 plt.savefig('figures/fig8.png', dpi=300, bbox_inches='tight')
+plt.savefig('figures/fig8.pdf', dpi=300, bbox_inches='tight', format='pdf')
 
 plt.show()

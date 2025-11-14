@@ -143,3 +143,4 @@ plt.tight_layout()
 
 # 保存为多种格式
 plt.savefig('figures/fig13.png', dpi=300, bbox_inches='tight')
+plt.savefig('figures/fig13.pdf', dpi=300, bbox_inches='tight', format='pdf')

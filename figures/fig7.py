@@ -107,7 +107,7 @@ plt.tight_layout(w_pad=1)
 plt.subplots_adjust(top=0.7, left=0.08) 
 
 plt.savefig('figures/fig7.png', dpi=300)
-# plt.savefig('overall.pdf', dpi=300, bbox_inches='tight', format='pdf') 
+plt.savefig('figures/fig7.pdf', dpi=300, bbox_inches='tight', format='pdf')
 
 # Display plot
 plt.show()

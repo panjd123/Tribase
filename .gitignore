@@ -32,3 +32,4 @@ logs/*.csv
 __pycache__
 /figures/*.png
 benchmarks.zip
+/figures/*.pdf

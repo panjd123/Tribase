@@ -75,3 +75,4 @@ plt.subplots_adjust(bottom=0.17,left=0.2)  # 整个图表向下移动
 plt.tight_layout()
 # 保存图形
 plt.savefig('figures/fig12b.png', dpi=300)
+plt.savefig('figures/fig12b.pdf', dpi=300, bbox_inches='tight', format='pdf')

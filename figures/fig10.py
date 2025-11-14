@@ -177,3 +177,4 @@ fig.subplots_adjust(top=0.15)
 
 plt.tight_layout()
 plt.savefig("figures/fig10.png", dpi=300, bbox_inches="tight")
+plt.savefig("figures/fig10.pdf", dpi=300, bbox_inches="tight", format="pdf")
