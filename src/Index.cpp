@@ -307,7 +307,7 @@ void Index::add(size_t n, const float* codes) {
     }
 
     if (metric == MetricType::METRIC_L2) {
-        size_t total_processd = 0;
+        size_t total_processed = 0;
 
         size_t total_sub_count_ip = 0;
         size_t total_sub_recall_ip = 0;
@@ -324,7 +324,7 @@ void Index::add(size_t n, const float* codes) {
         double log_interval = 2;
         [[maybe_unused]] auto running_log = [&]() -> void {
             if (verbose) {
-                if (logwatch.elapsedSeconds() > log_interval || total_processd == nlist) {
+                if (logwatch.elapsedSeconds() > log_interval || total_processed == nlist) {
                     logwatch.reset();
                     double total_elapsed = train_elapsed + add_elapsed + search_elapsed;
                     double progress = static_cast<double>(total_processed) / nlist;
@@ -485,7 +485,7 @@ void Index::add(size_t n, const float* codes) {
 
 #pragma omp critical
             {
-                total_processd++;
+                total_processed++;
                 running_log();
             }
         }
