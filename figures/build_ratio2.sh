@@ -47,9 +47,7 @@ output_csv_file="./logs/$target-recall-qps-tribase.csv"
 output_log_file="./logs/$target-recall-qps-tribase.log"
 faiss_output_csv_file="./logs/$target-recall-qps-faiss.csv"
 
-if [ $force -eq 1 ]; then
-    rm -rf $output_csv_file $output_log_file
-fi
+rm -rf $output_csv_file $output_log_file
 
 declare -A nprobes_dict
 

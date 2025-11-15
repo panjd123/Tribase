@@ -1,7 +1,12 @@
+echo "Starting one-click setup for TriBase..."
 docker pull panjd123/tribase-env:latest
 
-pipx install gdown
-gdown https://drive.google.com/file/d/12wFLDNStJU02pEn7VcAs00LyS7uzcAbl/view?usp=sharing --fuzzy
+if [ -f benchmarks.zip ]; then
+  echo "benchmarks.zip already exists, skipping download."
+else
+  pipx install gdown
+  gdown https://drive.google.com/file/d/1KXG6Yy3b2k1b0b7j1F2v5c3JH9V8xQzD/view?usp=sharing --fuzzy
+fi
 unzip -o benchmarks.zip
 
 docker run -d \

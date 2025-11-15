@@ -33,3 +33,4 @@ __pycache__
 /figures/*.png
 benchmarks.zip
 /figures/*.pdf
+/logs-bak

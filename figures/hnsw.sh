@@ -3,6 +3,8 @@
 #     ./release/bin/hnswlib_test --dataset $dataset --tag "release"
 # done
 
+rm -f ./logs/hnswlib_recall_release.csv
+
 ./release/bin/hnswlib_test --dataset nuswide --tag "release" --maxef 1000
 ./release/bin/hnswlib_test --dataset fasion_mnist_784 --tag "release" --maxef 100
 ./release/bin/hnswlib_test --dataset msong --tag "release" --maxef 100
